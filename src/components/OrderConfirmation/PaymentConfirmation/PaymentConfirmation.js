@@ -7,10 +7,10 @@ const stripePromise = loadStripe(
   "pk_test_51Ie1RRGHr4odbP2lkG25yrIYzXIPn9WsJUZO3QYp24VMxf1koKj37L5rh6rtPBtFcvtMcf1Wqn8chKsUXwhj7H5500o8TD7MuP"
 );
 
-const PaymentConfirmation = () => {
+const PaymentConfirmation = ({ handlePayment }) => {
   return (
     <Elements stripe={stripePromise}>
-      <CheckoutForm></CheckoutForm>
+      <CheckoutForm handlePayment={handlePayment}></CheckoutForm>
     </Elements>
   );
 };
