@@ -4,7 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import NoMatch from "./components/NoMatch/NoMatch";
 import Home from "./components/Home/Home/Home";
-// import Login from "./components/Login/Login/Login";
+import Login from "./components/Login/Login/Login";
+
+import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
+import OrderConfirmation from "./components/OrderConfirmation/OrderConfirmation/OrderConfirmation";
 
 export const UserContext = createContext();
 
@@ -22,13 +25,13 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/allPatients">
             <AllPatients></AllPatients>
+          </PrivateRoute> */}
+          <PrivateRoute path="/OrderConfirmation/:id">
+            <OrderConfirmation></OrderConfirmation>
           </PrivateRoute>
-          <Route path="/addDoctor">
-            <AddDoctor></AddDoctor>
-          </Route> */}
-          {/* <Route path="/login">
+          <Route path="/login">
             <Login></Login>
-          </Route> */}
+          </Route>
           <Route exact path="/">
             <Home></Home>
           </Route>

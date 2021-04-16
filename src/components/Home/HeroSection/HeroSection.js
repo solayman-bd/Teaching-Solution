@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="row d-flex justify-content-center align-items-center">
         <div className="col-md-6 col-sm-12">
           <div className="w-75 my-md-1 my-sm-2 mx-auto">
-            <img src={teachingImg} className="img-fluid" alt="" />
+            <img src={teachingImg} className="img-fluid img-thumbnail" alt="" />
           </div>
         </div>
         <div className="col-md-6 col-sm-12">
@@ -23,7 +23,9 @@ const HeroSection = () => {
               iste et doloribus omnis quibusdam, officiis ab atque laborum
               reiciendis eos? Laboriosam, nemo?
             </p>
-            <button className="btn btn-primary">Explore More</button>
+            <button className="btn btn-primary text-center my-2">
+              Explore More
+            </button>
           </div>
         </div>
       </div>

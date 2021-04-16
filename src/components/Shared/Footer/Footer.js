@@ -9,32 +9,24 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
-  const noNamed = [
-    { menuTitle: "." },
-    { name: "Emergency Dental Care", link: "/emergency" },
-    { name: "Check Up", link: "/checkup" },
-    { name: "Treatment of Personal Diseases", link: "/personal-treatment" },
-    { name: "Tooth Extraction", link: "/tooth-extract" },
-    { name: "Check Up", link: "/checkup" },
-  ];
   const ourAddress = [
-    { name: "New York - 101010 Hudson", link: "//google.com/map" },
-    { name: "Yards", link: "//google.com/map" },
+    { name: "Uttara - 1200 Dhaka", link: "//google.com/map" },
+    { name: "Bangladesh", link: "//google.com/map" },
   ];
-  const oralHealth = [
-    { name: "Emergency Dental Care", link: "/emergency" },
-    { name: "Check Up", link: "/checkup" },
-    { name: "Treatment of Personal Diseases", link: "/personal-treatment" },
-    { name: "Tooth Extraction", link: "/tooth-extract" },
+  const terms = [
+    { name: "Privacy", link: "/emergency" },
+    { name: "Help", link: "/checkup" },
+    { name: "FAQ", link: "/personal-treatment" },
+
     { name: "Check Up", link: "/checkup" },
     { name: "Check Up", link: "/checkup" },
     { name: "Check Up", link: "/checkup" },
   ];
-  const services = [
-    { name: "Emergency Dental Care", link: "/emergency" },
-    { name: "Check Up", link: "/checkup" },
-    { name: "Treatment of Personal Diseases", link: "/personal-treatment" },
-    { name: "Tooth Extraction", link: "/tooth-extract" },
+  const AboutUs = [
+    { name: "Blog", link: "/blog" },
+    { name: "Refund Policy", link: "/refundPolicy" },
+    { name: "Contact Us", link: "/contactUs" },
+    { name: "Demo", link: "/demo" },
     { name: "Check Up", link: "/checkup" },
     { name: "Check Up", link: "/checkup" },
     { name: "Check Up", link: "/checkup" },
@@ -43,9 +35,8 @@ const Footer = () => {
     <footer className="footer-area">
       <div className="container pt-5">
         <div className="row py-5">
-          <FooterCol key={1} menuTitle={"."} menuItems={noNamed} />
-          <FooterCol key={2} menuTitle="Services" menuItems={services} />
-          <FooterCol key={3} menuTitle="Oral Health" menuItems={oralHealth} />
+          <FooterCol key={2} menuTitle="About Us" menuItems={AboutUs} />
+          <FooterCol key={3} menuTitle="Terms" menuItems={terms} />
           <FooterCol key={4} menuTitle="Our Address" menuItems={ourAddress}>
             <ul className="social-media list-inline">
               <li className="list-inline-item">
@@ -69,7 +60,7 @@ const Footer = () => {
             </ul>
             <div className="mt-5">
               <h6>Call now</h6>
-              <button className="btn btn-primary">+2054784125</button>
+              <button className="btn btn-primary">+8801725789325</button>
             </div>
           </FooterCol>
         </div>
