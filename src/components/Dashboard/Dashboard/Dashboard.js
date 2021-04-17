@@ -5,11 +5,66 @@ import "./Dashboard.css";
 
 import OrderList from "../OrderList/OrderList";
 import SideBar from "../SideBar/SideBar";
+import Review from "../Review/Review";
+import AddService from "../AddService/AddService";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import ManageService from "../ManageService/ManageService";
 
 const Dashboard = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [customerInfo, setCustomerInfo] = useState([]);
+  const [order, setOrder] = useState(true);
+  const [addService, setAddService] = useState(false);
+  const [makeAdmin, setMakeAdmin] = useState(false);
+  const [manageService, setManageService] = useState(false);
 
+  const [review, setReview] = useState(false);
+  const handleReview = (answer) => {
+    if (answer === true) {
+      setReview(true);
+      setOrder(false);
+      setAddService(false);
+      setMakeAdmin(false);
+      setManageService(false);
+    }
+  };
+
+  const handleOrderList = (answer) => {
+    if (answer === true) {
+      setReview(false);
+      setOrder(true);
+      setAddService(false);
+      setMakeAdmin(false);
+      setManageService(false);
+    }
+  };
+  const handleAddService = (answer) => {
+    if (answer === true) {
+      setReview(false);
+      setOrder(false);
+      setAddService(true);
+      setMakeAdmin(false);
+      setManageService(false);
+    }
+  };
+  const handleMakeAdmin = (answer) => {
+    if (answer === true) {
+      setReview(false);
+      setOrder(false);
+      setAddService(false);
+      setMakeAdmin(true);
+      setManageService(false);
+    }
+  };
+  const handleManageServices = (answer) => {
+    if (answer === true) {
+      setReview(false);
+      setOrder(false);
+      setAddService(false);
+      setMakeAdmin(false);
+      setManageService(true);
+    }
+  };
   useEffect(() => {
     fetch("http://localhost:5000/dashboard", {
       method: "POST",
@@ -24,7 +79,13 @@ const Dashboard = () => {
     <div style={{ maxWidth: "100%", width: "98%" }} className="dashboard">
       <NavigationBar></NavigationBar>
       <div className="row main-content">
-        <SideBar></SideBar>
+        <SideBar
+          handleAddService={handleAddService}
+          handleMakeAdmin={handleMakeAdmin}
+          handleManageServices={handleManageServices}
+          handleReview={handleReview}
+          handleOrderList={handleOrderList}
+        ></SideBar>
         <div className="col-9">
           <div className="user-detail min-vh-100">
             <div className="user-info">
@@ -34,22 +95,31 @@ const Dashboard = () => {
             </div>
 
             <div className="details-information">
-              <table className="table w-75 mx-auto">
-                <thead>
-                  <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Service</th>
-                    <th scope="col">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {customerInfo &&
-                    customerInfo.map((data) => (
-                      <OrderList key={data._id} customerInfo={data}></OrderList>
-                    ))}
-                </tbody>
-              </table>
+              {order && (
+                <table className="table w-75 mx-auto">
+                  <thead>
+                    <tr>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Service</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {customerInfo &&
+                      customerInfo.map((data) => (
+                        <OrderList
+                          key={data._id}
+                          customerInfo={data}
+                        ></OrderList>
+                      ))}
+                  </tbody>
+                </table>
+              )}
+              {review && <Review></Review>}
+              {addService && <AddService></AddService>}
+              {makeAdmin && <MakeAdmin></MakeAdmin>}
+              {manageService && <ManageService></ManageService>}
             </div>
           </div>
         </div>
