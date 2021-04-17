@@ -10,8 +10,6 @@ import PaymentConfirmation from "../PaymentConfirmation/PaymentConfirmation";
 
 import { useForm } from "react-hook-form";
 
-// import ProcessPayment from "../ProcessPayment/ProcessPayment";
-
 const OrderConfirmation = (props) => {
   const history = useHistory();
   const {
