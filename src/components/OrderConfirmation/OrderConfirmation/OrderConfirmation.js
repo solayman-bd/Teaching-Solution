@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router";
+import { useHistory, useParams } from "react-router";
 import "./OrderConfirmation.css";
-import confirmedOrderImg from "../../../images/orderConfirned.jpg";
+
 import FakeServiceData from "../../../FakeServiceData/FakeServiceData";
 import { UserContext } from "../../../App";
 import NavigationBar from "../../Shared/Navigationbar/NavigationBar";
@@ -13,6 +13,7 @@ import { useForm } from "react-hook-form";
 // import ProcessPayment from "../ProcessPayment/ProcessPayment";
 
 const OrderConfirmation = (props) => {
+  const history = useHistory();
   const {
     register,
     handleSubmit,
@@ -20,15 +21,27 @@ const OrderConfirmation = (props) => {
     formState: { errors },
   } = useForm();
   const handlePayment = (id) => {
-    orderInfo.paymentId = id;
-    console.log(orderInfo);
+    if (id) {
+      orderInfo.paymentId = id;
+      console.log("i am from id");
+      fetch(`http://localhost:5000/addOrder`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          alert("info recorded");
+          history.push("/dashboard");
+        });
+    }
   };
   const [orderInfo, setOrderInfo] = useState(null);
   const onSubmit = (data) => {
     setOrderInfo(data);
   };
   const { id } = useParams();
-  // console.log("Id", id);
+
   const serviceData = FakeServiceData;
   // console.log("service data", serviceData);
 

@@ -8,6 +8,7 @@ import Login from "./components/Login/Login/Login";
 
 import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import OrderConfirmation from "./components/OrderConfirmation/OrderConfirmation/OrderConfirmation";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 
 export const UserContext = createContext();
 
@@ -26,6 +27,9 @@ function App() {
           <PrivateRoute path="/allPatients">
             <AllPatients></AllPatients>
           </PrivateRoute> */}
+          <Route path="/dashboard">
+            <Dashboard></Dashboard>
+          </Route>
           <PrivateRoute path="/OrderConfirmation/:id">
             <OrderConfirmation></OrderConfirmation>
           </PrivateRoute>
