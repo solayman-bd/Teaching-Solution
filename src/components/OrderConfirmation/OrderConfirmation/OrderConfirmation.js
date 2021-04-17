@@ -23,6 +23,7 @@ const OrderConfirmation = (props) => {
   const handlePayment = (id) => {
     if (id) {
       orderInfo.paymentId = id;
+      orderInfo.status = "pending";
       console.log("i am from id");
       fetch(`http://localhost:5000/addOrder`, {
         method: "POST",

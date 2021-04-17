@@ -12,3 +12,14 @@
   border-radius: 40px;
   margin: 15px 15px 15px 0px;
 }
+
+.access-item {
+  font-size: 1.4rem;
+  padding: 5px;
+  color: wheat;
+  cursor: pointer;
+}
+.icon {
+  font-size: 1.4rem;
+  padding: 2px;
+}
