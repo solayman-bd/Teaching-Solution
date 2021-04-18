@@ -4,7 +4,7 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 const Services = () => {
   const [serviceData, setServiceData] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/getServices`)
+    fetch(`https://secure-castle-55180.herokuapp.com/getServices`)
       .then((res) => res.json())
       .then((result) => setServiceData(result));
   }, []);

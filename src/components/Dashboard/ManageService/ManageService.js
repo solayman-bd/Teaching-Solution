@@ -5,7 +5,7 @@ const ManageService = () => {
   const [serviceData, setServiceData] = useState([]);
   const [editPageRedirection, setEditPageRedirection] = useState(false);
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://secure-castle-55180.herokuapp.com/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const ManageService = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/getServices`)
+    fetch(`https://secure-castle-55180.herokuapp.com/getServices`)
       .then((res) => res.json())
       .then((result) => setServiceData(result));
   }, [editPageRedirection]);

@@ -22,7 +22,7 @@ const OrderConfirmation = (props) => {
       orderInfo.paymentId = id;
       orderInfo.status = "pending";
       console.log("i am from id");
-      fetch(`http://localhost:5000/addOrder`, {
+      fetch(`https://secure-castle-55180.herokuapp.com/addOrder`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderInfo),
@@ -43,7 +43,7 @@ const OrderConfirmation = (props) => {
   const [serviceAvailable, setServiceAvailable] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/chosenService`, {
+    fetch(`https://secure-castle-55180.herokuapp.com/chosenService`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ id: id }),

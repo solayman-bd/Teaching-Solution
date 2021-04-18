@@ -8,7 +8,7 @@ const MakeAdmin = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    fetch(`http://localhost:5000/makeAdmin`, {
+    fetch(`https://secure-castle-55180.herokuapp.com/makeAdmin`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

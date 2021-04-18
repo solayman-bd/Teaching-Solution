@@ -30,7 +30,7 @@ const AddService = () => {
   const onSubmit = (data, e) => {
     data.img = imageURL;
     console.log("submitted", data);
-    fetch("http://localhost:5000/addServices", {
+    fetch("https://secure-castle-55180.herokuapp.com/addServices", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
