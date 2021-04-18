@@ -1,7 +1,7 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../../../App";
+
 const AddService = () => {
   // const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [imageURL, setIMageURL] = useState(null);

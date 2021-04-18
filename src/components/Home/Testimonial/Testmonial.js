@@ -1,42 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Testimonial.css";
-import profileImg from "../../../images/pp.jpg";
+
 import TestimonialCard from "../TestimonialCard/TestimonialCard";
 
-// const testimonialData = [
-//   {
-//     id: 1,
-//     img: profileImg,
-//     name: "Rumman",
-//     designation: "CEO,Microsoft",
-//     remark:
-//       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
-//   },
-//   {
-//     id: 2,
-//     img: profileImg,
-//     name: "Rumman",
-//     designation: "CEO,Microsoft",
-//     remark:
-//       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
-//   },
-//   {
-//     id: 3,
-//     img: profileImg,
-//     name: "Rumman",
-//     designation: "CEO,Microsoft",
-//     remark:
-//       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
-//   },
-//   {
-//     id: 4,
-//     img: profileImg,
-//     name: "Rumman",
-//     designation: "CEO,Microsoft",
-//     remark:
-//       "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable",
-//   },
-// ];
 const Testimonial = () => {
   const [testimonialData, setTestimonialData] = useState([]);
   useEffect(() => {
