@@ -101,7 +101,10 @@ const Dashboard = () => {
           handleOrderList={handleOrderList}
         ></SideBar>
         <div className="col-9">
-          <div className="user-detail min-vh-100">
+          <div
+            style={{ height: "600px", overflow: "auto" }}
+            className="user-detail"
+          >
             <div className="user-info">
               <h3 className="text-end mx-2 p-2">
                 User Name: {loggedInUser.name}

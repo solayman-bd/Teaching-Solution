@@ -6,7 +6,10 @@ const ServiceCard = (props) => {
   const { _id, name, details, price, img } = props.service;
   return (
     <div className="col-md-3 col-sm-12 my-4 ">
-      <div className="card shadow mx-auto" style={{ width: "18rem" }}>
+      <div
+        className="card shadow mx-auto card-animation"
+        style={{ width: "18rem" }}
+      >
         <img
           src={img}
           style={{ height: "150px" }}
@@ -19,9 +22,12 @@ const ServiceCard = (props) => {
           <div style={{ height: "150px", overflow: "scroll" }}>
             <p className="card-text">{details}</p>
           </div>
-          <h5>Price: {price}tk/month</h5>
+          <h5 className="my-1">Price: {price}tk/month</h5>
 
-          <Link className="btn btn-primary" to={`/orderConfirmation/${_id}`}>
+          <Link
+            className="btn btn-success button-animation"
+            to={`/orderConfirmation/${_id}`}
+          >
             Buy Now
           </Link>
         </div>

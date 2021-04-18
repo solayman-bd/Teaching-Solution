@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { BsListCheck, BsCommand } from "react-icons/bs";
 import { FaCommentAlt, FaPlusCircle } from "react-icons/fa";
 import { UserContext } from "../../../App";
+import "./SideBar.css";
 const SideBar = ({
   handleAddService,
   handleMakeAdmin,
@@ -21,46 +22,43 @@ const SideBar = ({
       .then((data) => setIsAdmin(data));
   }, []);
   return (
-    <div className="col-2">
-      <div className="bg-primary user-access min-vh-100">
+    <div className="col-2 ">
+      <div style={{ height: "600px" }} className="bg-primary user-access">
         <h3 className="p-2 text-center mt-3">Dashboard</h3>
-        <div className="access-list text-center">
-          <h3
-            onClick={() => handleOrderList(true)}
-            className="my-2 access-item"
-          >
+        <div className="access-list">
+          <p onClick={() => handleOrderList(true)} className="my-2 access-item">
             {" "}
             <BsListCheck className="icon" /> Order List
-          </h3>
-          <h3 onClick={() => handleReview(true)} className="my-2 access-item">
+          </p>
+          <p onClick={() => handleReview(true)} className="my-2 access-item">
             {" "}
             <FaCommentAlt className="icon"></FaCommentAlt>Review
-          </h3>
+          </p>
           {isAdmin && (
             <div>
-              <h3
+              <p
                 onClick={() => handleAddService(true)}
                 className="my-2 access-item"
               >
                 <FaPlusCircle className="icon" />
                 Add service
-              </h3>
-              <h3
+              </p>
+              <p
                 onClick={() => handleMakeAdmin(true)}
                 className="my-2 access-item"
               >
                 {" "}
                 <FaPlusCircle className="icon" />
                 Make Admin{" "}
-              </h3>
-              <h3
+              </p>
+              <p
                 onClick={() => handleManageServices(true)}
                 className="my-2 access-item"
               >
                 {" "}
                 <BsCommand className="icon" />
                 Manage Services
-              </h3>
+              </p>
             </div>
           )}
         </div>
