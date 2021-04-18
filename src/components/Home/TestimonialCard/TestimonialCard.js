@@ -19,7 +19,10 @@ const TestimonialCard = ({ info }) => {
             </div>
           </div>
         </div>
-        <div className="card-body text-center col-12">
+        <div
+          style={{ height: "150px", overflow: "hidden" }}
+          className="card-body text-center col-12"
+        >
           <p className="card-text">{info.remark}</p>
         </div>
       </div>

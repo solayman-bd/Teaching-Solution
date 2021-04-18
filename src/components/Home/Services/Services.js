@@ -14,7 +14,7 @@ const Services = () => {
         <span className="text-info">The Services</span> <br></br> We{" "}
         <span className="text-info">Provide</span>
       </h1>
-      <div className="row mx-auto">
+      <div style={{ width: "95%" }} className="row mx-auto">
         {serviceData.map((data) => (
           <ServiceCard key={data.id} service={data}></ServiceCard>
         ))}

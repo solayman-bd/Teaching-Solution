@@ -13,7 +13,7 @@ const Testimonial = () => {
   return (
     <section className="testimonial-area my-5 py-2">
       <h1 className="text-center text-info my-5">Testimonial</h1>
-      <div className="row">
+      <div style={{ width: "95%" }} className="row mx-auto">
         {testimonialData.map((data) => (
           <TestimonialCard key={data.id} info={data}></TestimonialCard>
         ))}
