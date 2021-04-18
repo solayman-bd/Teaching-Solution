@@ -106,9 +106,9 @@ const Dashboard = () => {
             className="user-detail"
           >
             <div className="user-info">
-              <h3 className="text-end mx-2 p-2">
+              <h5 className="text-end mx-2 p-2">
                 User Name: {loggedInUser.name}
-              </h3>
+              </h5>
             </div>
 
             <div className="details-information">

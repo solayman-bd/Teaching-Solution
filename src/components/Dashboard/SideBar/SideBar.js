@@ -21,6 +21,10 @@ const SideBar = ({
       .then((res) => res.json())
       .then((data) => setIsAdmin(data));
   }, []);
+  const handleLogOut = () => {
+    sessionStorage.clear();
+    setLoggedInUser("");
+  };
   return (
     <div className="col-2 ">
       <div style={{ height: "600px" }} className="bg-primary user-access">
@@ -61,6 +65,14 @@ const SideBar = ({
               </p>
             </div>
           )}
+          <br />
+          <h5
+            onClick={handleLogOut}
+            style={{ cursor: "pointer" }}
+            className="text-warning text-center log-out"
+          >
+            Log Out
+          </h5>
         </div>
       </div>
     </div>
