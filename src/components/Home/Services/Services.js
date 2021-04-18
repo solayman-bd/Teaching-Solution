@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
-import fakeData from "../../../FakeServiceData/FakeServiceData";
 
 const Services = () => {
-  const serviceData = fakeData;
+  const [serviceData, setServiceData] = useState([]);
+  useEffect(() => {
+    fetch(`http://localhost:5000/getServices`)
+      .then((res) => res.json())
+      .then((result) => setServiceData(result));
+  }, []);
   return (
     <section className="services my-5 py-2">
       <h1 className="text-center">

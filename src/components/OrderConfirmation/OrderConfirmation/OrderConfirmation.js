@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import "./OrderConfirmation.css";
 
-import FakeServiceData from "../../../FakeServiceData/FakeServiceData";
 import { UserContext } from "../../../App";
 import NavigationBar from "../../Shared/Navigationbar/NavigationBar";
 import Footer from "../../Shared/Footer/Footer";
@@ -39,16 +38,21 @@ const OrderConfirmation = (props) => {
   const onSubmit = (data) => {
     setOrderInfo(data);
   };
+
   const { id } = useParams();
+  const [serviceAvailable, setServiceAvailable] = useState([]);
 
-  const serviceData = FakeServiceData;
-  // console.log("service data", serviceData);
+  useEffect(() => {
+    fetch(`http://localhost:5000/chosenService`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ id: id }),
+    })
+      .then((res) => res.json())
+      .then((result) => setServiceAvailable(result));
+  }, []);
 
-  const foundData = serviceData.filter((data) => data._id === id);
-  // console.log("found data", foundData);
-  const { name, price } = foundData[0];
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-  // console.log("user Info", loggedInUser);
   return (
     <div
       style={{ maxWidth: "100%", width: "98%", backgroundColor: "#F6F7F8" }}
@@ -56,80 +60,82 @@ const OrderConfirmation = (props) => {
     >
       <NavigationBar></NavigationBar>
 
-      <div
-        style={{
-          display: orderInfo ? "none" : "block",
-          backgroundColor: "#FFFFFF",
-        }}
-        className="w-50 p-5 mx-auto shadow"
-      >
-        <h2 className="text-center">Admission Confirmation </h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="mb-3">
-            <label for="name" class="form-label">
-              User Name :
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              name="name"
-              value={loggedInUser.name}
-              {...register("name")}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="email" class="form-label">
-              Email address :
-            </label>
-            <input
-              type="email"
-              class="form-control"
-              name="email"
-              {...register("email")}
-              value={loggedInUser.email}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="service" class="form-label">
-              Service Name :
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              name="service"
-              {...register("service")}
-              value={name}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="price" class="form-label">
-              Price :
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              name="price"
-              value={price}
-              {...register("price")}
-            />
-          </div>
-          <div className="mb-3">
-            <label for="mobile" class="form-label">
-              Mobile :
-            </label>
-            <input
-              type="number"
-              class="form-control"
-              name="mobile"
-              placeholder="01722222222"
-              {...register("mobile", { required: true })}
-            />
-            {errors.mobile && <span>This field is required</span>}
-          </div>
+      {serviceAvailable[0] && (
+        <div
+          style={{
+            display: orderInfo ? "none" : "block",
+            backgroundColor: "#FFFFFF",
+          }}
+          className="w-50 p-5 mx-auto shadow"
+        >
+          <h2 className="text-center">Admission Confirmation </h2>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="mb-3">
+              <label htmlFor="name" class="form-label">
+                User Name :
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                value={loggedInUser.name}
+                {...register("name")}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="email" class="form-label">
+                Email address :
+              </label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                {...register("email")}
+                value={loggedInUser.email}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="service" class="form-label">
+                Service Name :
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="service"
+                {...register("service")}
+                value={serviceAvailable[0].name}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="price" class="form-label">
+                Price :
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                name="price"
+                value={serviceAvailable[0].price}
+                {...register("price")}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="mobile" class="form-label">
+                Mobile :
+              </label>
+              <input
+                type="number"
+                class="form-control"
+                name="mobile"
+                placeholder="01722222222"
+                {...register("mobile", { required: true })}
+              />
+              {errors.mobile && <span>This field is required</span>}
+            </div>
 
-          <input className="btn btn-primary" type="submit" />
-        </form>
-      </div>
+            <input className="btn btn-primary" type="submit" />
+          </form>
+        </div>
+      )}
 
       <div
         style={{
