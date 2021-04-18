@@ -6,7 +6,7 @@ const ServiceLIst = ({ serviceInfo, handleDelete }) => {
     <tr>
       {}
       <th scope="row">{name}</th>
-      <td>{price}</td>
+      <td>{price} BDT</td>
 
       <td>
         <button

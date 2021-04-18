@@ -11,7 +11,7 @@ const Review = () => {
 
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     data.img = loggedInUser.imgUrl;
 
     fetch("http://localhost:5000/addReview", {
@@ -22,7 +22,7 @@ const Review = () => {
       .then((res) => res.json())
       .then((result) => {
         alert("info recorded");
-        // history.push("/dashboard");
+        e.target.reset();
       });
   };
   return (

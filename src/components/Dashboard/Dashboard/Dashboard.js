@@ -18,6 +18,16 @@ const Dashboard = () => {
   const [makeAdmin, setMakeAdmin] = useState(false);
   const [manageService, setManageService] = useState(false);
 
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    fetch("http://localhost:5000/isAdmin", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ email: loggedInUser.email }),
+    })
+      .then((res) => res.json())
+      .then((data) => setIsAdmin(data));
+  }, []);
   const [review, setReview] = useState(false);
   const handleReview = (answer) => {
     if (answer === true) {
@@ -65,6 +75,7 @@ const Dashboard = () => {
       setManageService(true);
     }
   };
+  const [dataLoad, setDataLoad] = useState(false);
   useEffect(() => {
     fetch("http://localhost:5000/dashboard", {
       method: "POST",
@@ -73,8 +84,11 @@ const Dashboard = () => {
     })
       .then((res) => res.json())
       .then((data) => setCustomerInfo(data));
-  }, []);
+  }, [dataLoad]);
 
+  const handleDataLoad = (response) => {
+    setDataLoad(response);
+  };
   return (
     <div style={{ maxWidth: "100%", width: "98%" }} className="dashboard">
       <NavigationBar></NavigationBar>
@@ -96,13 +110,15 @@ const Dashboard = () => {
 
             <div className="details-information">
               {order && (
-                <table className="table w-75 mx-auto">
+                <table style={{ width: "80%" }} className="table mx-auto">
                   <thead>
                     <tr>
                       <th scope="col">Name</th>
                       <th scope="col">Email</th>
                       <th scope="col">Service</th>
+
                       <th scope="col">Status</th>
+                      {isAdmin && <th scope="col"> Change Status</th>}
                     </tr>
                   </thead>
                   <tbody>
@@ -111,6 +127,8 @@ const Dashboard = () => {
                         <OrderList
                           key={data._id}
                           customerInfo={data}
+                          isAdmin={isAdmin}
+                          handleDataLoad={handleDataLoad}
                         ></OrderList>
                       ))}
                   </tbody>

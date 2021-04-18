@@ -27,7 +27,7 @@ const AddService = () => {
       });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     data.img = imageURL;
     console.log("submitted", data);
     fetch("http://localhost:5000/addServices", {
@@ -38,6 +38,7 @@ const AddService = () => {
       .then((res) => res.json())
       .then((result) => {
         alert("info recorded");
+        e.target.reset();
       });
   };
   return (
