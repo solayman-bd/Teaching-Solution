@@ -13,7 +13,9 @@ const HeroSection = () => {
         </div>
         <div className="col-md-6 col-sm-12">
           <div className="w-50 mx-auto">
-            <h1 className="text-primary">Looking For Private Tutor ???</h1>
+            <h1 className="text-primary my-2 py-2">
+              Looking For Private Tutor ???
+            </h1>
             <h2 className="text-success">
               Tutoring Solution for Every Student
             </h2>
@@ -23,7 +25,7 @@ const HeroSection = () => {
               iste et doloribus omnis quibusdam, officiis ab atque laborum
               reiciendis eos? Laboriosam, nemo?
             </p>
-            <button className="btn btn-primary text-center my-2">
+            <button className="btn btn-primary text-center mb-5">
               Explore More
             </button>
           </div>

@@ -34,7 +34,7 @@ const Login = () => {
           email: user.email,
           imgUrl: user.photoURL,
         };
-        console.log(newUser);
+        // console.log(newUser);
         setLoggedInUser(newUser);
         storeAuthToken();
       })

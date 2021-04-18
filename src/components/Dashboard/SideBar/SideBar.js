@@ -23,7 +23,7 @@ const SideBar = ({
   return (
     <div className="col-2">
       <div className="bg-primary user-access min-vh-100">
-        <h2 className="p-2 text-center mt-3">Dashboard</h2>
+        <h3 className="p-2 text-center mt-3">Dashboard</h3>
         <div className="access-list text-center">
           <h3
             onClick={() => handleOrderList(true)}
