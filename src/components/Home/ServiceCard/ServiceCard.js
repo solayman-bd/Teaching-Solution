@@ -19,7 +19,7 @@ const ServiceCard = (props) => {
         <div className="card-body text-center">
           <h5 className="card-title">{name}</h5>
 
-          <div style={{ height: "150px", overflow: "scroll" }}>
+          <div style={{ height: "150px", overflow: "auto" }}>
             <p className="card-text">{details}</p>
           </div>
           <h5 className="my-1">Price: {price}tk/month</h5>
